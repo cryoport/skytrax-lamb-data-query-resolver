@@ -1,0 +1,5 @@
+
+rootProject.name="skytrax-lamb-data-query-resolver"
+
+include("app")
+include("infra")
