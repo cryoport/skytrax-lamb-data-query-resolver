@@ -28,11 +28,10 @@ dependencies {
     testImplementation("org.testcontainers:mongodb")
     testImplementation("org.testcontainers:testcontainers")
     implementation("io.micronaut:micronaut-validation")
-
     implementation("io.micronaut.aws:micronaut-function-aws")
-
     implementation("io.micronaut.aws:micronaut-function-aws-custom-runtime")
-
+    implementation('org.apache.commons:commons-text:1.10.0')
+    compileOnly("com.google.code.findbugs:jsr305")
 }
 
 

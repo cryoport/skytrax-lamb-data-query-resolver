@@ -1,19 +1,25 @@
 package com.cryoport.skytrax;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyResponseEvent;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import io.micronaut.core.io.ResourceResolver;
+import jakarta.inject.Inject;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
+import java.util.Map;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class FunctionRequestHandlerTest {
+public class FunctionRequestHandlerTest extends BaseMongoDataTest {
 
     private static FunctionRequestHandler handler;
 
     @BeforeAll
-    public static void setupServer() {
-        handler = new FunctionRequestHandler();
+    void setupServer() {
+        handler = new FunctionRequestHandler(application.getApplicationContext());
     }
 
     @AfterAll
@@ -23,13 +29,17 @@ public class FunctionRequestHandlerTest {
         }
     }
 
+    @Inject
+    private ObjectMapper mapper;
+
+    @Inject
+    private ResourceResolver resourceResolver;
+
     @Test
-    public void testHandler() {
-        APIGatewayProxyRequestEvent request = new APIGatewayProxyRequestEvent();
-        request.setHttpMethod("GET");
-        request.setPath("/");
-        APIGatewayProxyResponseEvent response = handler.execute(request);
-        assertEquals(200, response.getStatusCode().intValue());
-        assertEquals("{\"message\":\"Hello World\"}", response.getBody());
+    public void testHandler() throws IOException {
+        var expectedPayload =
+                mapper.readValue(resourceResolver.getResource("classpath:event.json").get(), Map.class);
+        Map<String, Object> response = handler.execute(expectedPayload);
+        assertEquals("Hello world", response.get("message"));
     }
 }
