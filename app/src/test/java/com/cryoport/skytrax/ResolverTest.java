@@ -1,7 +1,7 @@
 package com.cryoport.skytrax;
 
-import com.cryoport.skytrax.resolver.ConditionMonitorDataResolver;
-import com.cryoport.skytrax.resolver.Resolver;
+import com.cryoport.skytrax.resolver.resolvers.ConditionMonitorDataResolver;
+import com.cryoport.skytrax.resolver.resolvers.Resolver;
 import com.cryoport.skytrax.resolver.ResolverFactory;
 import io.micronaut.test.extensions.junit5.annotation.MicronautTest;
 import jakarta.inject.Inject;

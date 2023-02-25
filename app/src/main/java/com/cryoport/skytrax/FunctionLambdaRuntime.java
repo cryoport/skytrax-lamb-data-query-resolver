@@ -1,7 +1,5 @@
 package com.cryoport.skytrax;
 
-import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent;
-import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyResponseEvent;
 import io.micronaut.function.aws.runtime.AbstractMicronautLambdaRuntime;
 
 import java.net.MalformedURLException;
@@ -12,8 +10,8 @@ import io.micronaut.core.annotation.Nullable;
 
 public class FunctionLambdaRuntime
         extends AbstractMicronautLambdaRuntime<
-        Map<String, Object>, Map<String, Object>,
-        Map<String, Object>, Map<String, Object>
+        Map<String, Object>, Object,
+        Map<String, Object>, Object
         > {
     public static void main(String[] args) {
         try {
@@ -26,7 +24,7 @@ public class FunctionLambdaRuntime
 
     @Override
     @Nullable
-    protected RequestHandler<Map<String, Object>, Map<String, Object>> createRequestHandler(String... args) {
+    protected RequestHandler<Map<String, Object>, Object> createRequestHandler(String... args) {
         return new FunctionRequestHandler();
     }
 }

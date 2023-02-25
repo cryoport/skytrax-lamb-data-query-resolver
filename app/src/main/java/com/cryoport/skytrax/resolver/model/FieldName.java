@@ -1,4 +1,4 @@
-package com.cryoport.skytrax.resolver;
+package com.cryoport.skytrax.resolver.model;
 
 import javax.annotation.CheckForNull;
 import java.util.HashMap;

@@ -1,6 +1,6 @@
 package com.cryoport.skytrax;
 
-import com.cryoport.skytrax.resolver.FieldName;
+import com.cryoport.skytrax.resolver.model.FieldName;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
