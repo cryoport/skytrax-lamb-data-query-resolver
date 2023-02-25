@@ -2,6 +2,7 @@ package com.cryoport.skytrax;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyRequestEvent;
 import com.amazonaws.services.lambda.runtime.events.APIGatewayProxyResponseEvent;
 import com.amazonaws.services.lambda.runtime.events.models.s3.S3EventNotification;
+import com.cryoport.skytrax.resolver.model.dto.ResponseType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.micronaut.core.io.ResourceResolver;
 import jakarta.inject.Inject;
@@ -41,10 +42,7 @@ public class FunctionRequestHandlerTest extends BaseMongoDataTest {
     public void testHandler() throws IOException {
         var expectedPayload =
                 mapper.readValue(resourceResolver.getResource("classpath:event.json").get(), Map.class);
-        Object execute = handler.execute(expectedPayload);
-
+        ResponseType<?> execute = handler.execute(expectedPayload);
         assertNotNull(execute);
-        /*Map<String, Object> response = (Map<String, Object>) handler.execute(expectedPayload);
-        assertEquals("Hello world", response.get("message"));*/
     }
 }

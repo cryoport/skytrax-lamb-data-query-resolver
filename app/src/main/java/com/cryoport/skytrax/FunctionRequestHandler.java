@@ -11,7 +11,7 @@ import jakarta.inject.Inject;
 import java.util.Map;
 
 
-public class FunctionRequestHandler extends MicronautRequestHandler<Map<String, Object>, Object> {
+public class FunctionRequestHandler extends MicronautRequestHandler<Map<String, Object>, ResponseType<?>> {
     @Inject
     ObjectMapper objectMapper;
 
@@ -26,7 +26,7 @@ public class FunctionRequestHandler extends MicronautRequestHandler<Map<String, 
     }
 
     @Override
-    public Object execute(Map<String, Object> event) {
+    public ResponseType<?> execute(Map<String, Object> event) {
         Map<String, Object> info = (Map<String, Object>) event.get("info");
         String fieldName = info.get("fieldName").toString();
         Resolver<?> resolver = resolverFactory.provideResolver(fieldName);
