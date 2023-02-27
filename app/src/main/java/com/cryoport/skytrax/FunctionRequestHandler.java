@@ -1,8 +1,7 @@
 package com.cryoport.skytrax;
 
-import com.cryoport.skytrax.resolver.model.dto.ResponseType;
-import com.cryoport.skytrax.resolver.resolvers.Resolver;
 import com.cryoport.skytrax.resolver.ResolverFactory;
+import com.cryoport.skytrax.resolver.resolvers.Resolver;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.micronaut.context.ApplicationContext;
 import io.micronaut.function.aws.MicronautRequestHandler;
@@ -13,7 +12,7 @@ import org.slf4j.LoggerFactory;
 import java.util.Map;
 
 
-public class FunctionRequestHandler extends MicronautRequestHandler<Map<String, Object>, ResponseType<?>> {
+public class FunctionRequestHandler extends MicronautRequestHandler<Map<String, Object>, Object> {
 
     private static final Logger LOG = LoggerFactory.getLogger(FunctionRequestHandler.class);
     @Inject
@@ -30,13 +29,13 @@ public class FunctionRequestHandler extends MicronautRequestHandler<Map<String, 
     }
 
     @Override
-    public ResponseType<?> execute(Map<String, Object> event) {
+    public Object execute(Map<String, Object> event) {
         LOG.info("Start execution");
         Map<String, Object> info = (Map<String, Object>) event.get("info");
         String fieldName = info.get("fieldName").toString();
         Resolver<?> resolver = resolverFactory.provideResolver(fieldName);
-        ResponseType<?> resolve = resolver.resolve(event);
+        Object result = resolver.resolve(event);
         LOG.info("End execution");
-        return resolve;
+        return result;
     }
 }

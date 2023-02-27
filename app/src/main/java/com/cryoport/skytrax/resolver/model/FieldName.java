@@ -1,8 +1,11 @@
 package com.cryoport.skytrax.resolver.model;
 
 import javax.annotation.CheckForNull;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 public enum FieldName {
 
@@ -11,23 +14,20 @@ public enum FieldName {
     DEVICES("devices"),
     CONDITION_MONITOR_DATA("conditionMonitorData");
 
-    private static final Map<String, FieldName> map = new HashMap<>();
+    private static final Map<String, FieldName> map = Arrays.stream(FieldName.values())
+            .collect(Collectors.toMap(FieldName::getValue, Function.identity()));
     private final String value;
 
     FieldName(String value) {
         this.value = value;
     }
 
-    private static void init() {
-        for (FieldName fieldName : FieldName.values()) {
-            map.put(fieldName.value, fieldName);
-        }
-        assert map.size() == FieldName.values().length;
+    private String getValue() {
+        return value;
     }
 
     @CheckForNull
     public static FieldName get(String fieldName) {
-        if (map.isEmpty()) init();
         return map.get(fieldName);
     }
 }

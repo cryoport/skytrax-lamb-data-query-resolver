@@ -14,7 +14,7 @@ public class ResolverFactory {
         this.beanContext = beanContext;
     }
 
-    public Resolver provideResolver(String fieldName) {
+    public Resolver<?> provideResolver(String fieldName) {
         FieldName fieldNameEnum = FieldName.get(fieldName);
         if (fieldNameEnum == null)
             throw new UnsupportedOperationException("Not a valid fieldName %s".formatted(fieldName));

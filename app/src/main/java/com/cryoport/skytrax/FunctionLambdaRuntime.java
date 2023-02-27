@@ -1,18 +1,16 @@
 package com.cryoport.skytrax;
 
-import com.cryoport.skytrax.resolver.model.dto.ResponseType;
+import com.amazonaws.services.lambda.runtime.RequestHandler;
+import io.micronaut.core.annotation.Nullable;
 import io.micronaut.function.aws.runtime.AbstractMicronautLambdaRuntime;
 
 import java.net.MalformedURLException;
 import java.util.Map;
 
-import com.amazonaws.services.lambda.runtime.RequestHandler;
-import io.micronaut.core.annotation.Nullable;
-
 public class FunctionLambdaRuntime
         extends AbstractMicronautLambdaRuntime<
-        Map<String, Object>, ResponseType<?>,
-        Map<String, Object>, ResponseType<?>
+        Map<String, Object>, Object,
+        Map<String, Object>, Object
         > {
     public static void main(String[] args) {
         try {
@@ -25,7 +23,7 @@ public class FunctionLambdaRuntime
 
     @Override
     @Nullable
-    protected RequestHandler<Map<String, Object>, ResponseType<?>> createRequestHandler(String... args) {
+    protected RequestHandler<Map<String, Object>, Object> createRequestHandler(String... args) {
         return new FunctionRequestHandler();
     }
 }
