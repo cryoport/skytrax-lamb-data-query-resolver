@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 @MicronautTest
-public class ResolverTest extends BaseMongoDataTest {
+class ResolverTest extends BaseMongoDataTest {
 
     @Inject
     ResolverFactory resolverFactory;

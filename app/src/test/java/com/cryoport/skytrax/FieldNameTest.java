@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class FieldNameTest {
+class FieldNameTest {
 
     @Test
     void verify_enum_get() {

@@ -12,7 +12,7 @@ import java.util.Map;
 
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-public class FunctionRequestHandlerTest extends BaseMongoDataTest {
+class FunctionRequestHandlerTest extends BaseMongoDataTest {
 
     private static FunctionRequestHandler handler;
 
@@ -35,7 +35,7 @@ public class FunctionRequestHandlerTest extends BaseMongoDataTest {
     private ResourceResolver resourceResolver;
 
     @Test
-    public void testHandler() throws IOException {
+    void testHandler() throws IOException {
         var expectedPayload =
                 mapper.readValue(resourceResolver.getResource("classpath:event.json").get(), Map.class);
         Object execute = handler.execute(expectedPayload);
