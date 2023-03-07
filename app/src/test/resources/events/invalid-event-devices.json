@@ -1,0 +1,56 @@
+{
+  "arguments": {
+    "id": "1234"
+  },
+  "identity": null,
+  "source": null,
+  "request": {
+    "headers": {
+      "x-forwarded-for": "184.178.74.122, 130.176.213.77",
+      "sec-ch-ua-mobile": "?0",
+      "cloudfront-viewer-country": "US",
+      "cloudfront-is-tablet-viewer": "false",
+      "x-amzn-requestid": "0895043a-ae35-45c0-af9f-c511bc9ba0ee",
+      "via": "2.0 5d8fb728e55016a1777141c94edc027e.cloudfront.net (CloudFront)",
+      "cloudfront-forwarded-proto": "https",
+      "origin": "https://us-west-2.console.aws.amazon.com",
+      "content-length": "129",
+      "x-forwarded-proto": "https",
+      "accept-language": "en",
+      "host": "jat3n3ezjjbpnf7li36iss2f3m.appsync-api.us-west-2.amazonaws.com",
+      "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/110.0.0.0 Safari/537.36",
+      "cloudfront-is-mobile-viewer": "false",
+      "accept": "application/json, text/plain, */*",
+      "cloudfront-viewer-asn": "63182",
+      "cloudfront-is-smarttv-viewer": "false",
+      "accept-encoding": "gzip, deflate, br",
+      "referer": "https://us-west-2.console.aws.amazon.com/",
+      "x-api-key": "da2-oxmbhmfk4fhahocgxi5ucxboma",
+      "content-type": "application/json",
+      "sec-fetch-mode": "cors",
+      "x-amzn-trace-id": "Root=1-63f7fb4a-5b7ae95457ccfe1c5ba2c0e9",
+      "x-amz-cf-id": "ehs7LzmT-CV_LNhIFhEM-bt1NHbcmeKZNHLWgE_X3upCcLxDyKAqWw==",
+      "sec-fetch-dest": "empty",
+      "x-amz-user-agent": "AWS-Console-AppSync/",
+      "sec-ch-ua-platform": "\"macOS\"",
+      "cloudfront-is-desktop-viewer": "true",
+      "sec-fetch-site": "cross-site",
+      "sec-ch-ua": "\"Chromium\";v=\"110\", \"Not A(Brand\";v=\"24\", \"Google Chrome\";v=\"110\"",
+      "x-forwarded-port": "443"
+    },
+    "domainName": null
+  },
+  "prev": null,
+  "info": {
+    "selectionSetList": [
+      "id",
+      "title"
+    ],
+    "selectionSetGraphQL": "{\n  id\n  title\n}",
+    "fieldName": "device",
+    "parentTypeName": "Query",
+    "variables": {
+    }
+  },
+  "stash": {}
+}

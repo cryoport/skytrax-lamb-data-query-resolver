@@ -1,6 +1,10 @@
 package com.cryoport.skytrax.resolver.resolvers;
 
+import com.cryoport.skytrax.entity.DeviceEntity;
+import com.cryoport.skytrax.repository.DeviceRepository;
 import com.cryoport.skytrax.resolver.model.dto.Device;
+import io.micronaut.core.util.CollectionUtils;
+import jakarta.inject.Inject;
 import jakarta.inject.Singleton;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,16 +13,17 @@ import java.util.List;
 import java.util.Map;
 
 @Singleton
-public class DevicesResolver implements Resolver<List<Device>> {
+public class DevicesResolver implements Resolver<List<DeviceEntity>> {
 
     private static final Logger LOG = LoggerFactory.getLogger(DevicesResolver.class);
+
+    @Inject
+    private DeviceRepository deviceRepository;
+
     @Override
-    public List<Device> resolve(Map<String, Object> event) {
-        //TODO: implement
-        LOG.info("Starting resolver");
-        return List.of(
-                new Device("123", "some-message"),
-                new Device("456", "some-message"),
-                new Device("789", "some-message"));
+    public List<DeviceEntity> resolve(Map<String, Object> event) {
+        LOG.info("Starting Devices resolver");
+        Iterable<DeviceEntity> devices = deviceRepository.findAll();
+        return CollectionUtils.iterableToList(devices);
     }
 }
