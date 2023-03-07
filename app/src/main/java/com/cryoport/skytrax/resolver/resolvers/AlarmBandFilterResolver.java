@@ -13,7 +13,7 @@ import java.util.Optional;
 @Singleton
 public class AlarmBandFilterResolver implements Resolver<AlarmBandFiltersEntity> {
 
-    private static final Logger LOG = LoggerFactory.getLogger(AlarmBandFiltersResolver.class);
+    private static final Logger LOG = LoggerFactory.getLogger(AlarmBandFilterResolver.class);
 
     @Inject
     private AlarmBandFiltersRepository alarmBandFiltersRepository;

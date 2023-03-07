@@ -2,7 +2,6 @@ package com.cryoport.skytrax.resolver.resolvers;
 
 import com.cryoport.skytrax.entity.DeviceEntity;
 import com.cryoport.skytrax.repository.DeviceRepository;
-import com.cryoport.skytrax.resolver.model.dto.Device;
 import io.micronaut.core.util.CollectionUtils;
 import jakarta.inject.Inject;
 import jakarta.inject.Singleton;
