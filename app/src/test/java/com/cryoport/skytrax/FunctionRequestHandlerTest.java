@@ -12,6 +12,7 @@ import io.micronaut.core.io.ResourceResolver;
 import jakarta.inject.Inject;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
@@ -72,6 +73,15 @@ class FunctionRequestHandlerTest extends BaseMongoDataTest {
         createDevice();
         createConditionMonitor();
         assertThrows(UnsupportedOperationException.class, ()-> handler.execute(event));
+    }
+
+    @Test
+    void test_handler_alarm_band_filter_data_not_present() throws IOException {
+        createAlarmBandFilters();
+        var alarmBandFilterEvent =
+                mapper.readValue(resourceResolver.getResource("classpath:events/invalid-data-event-alarm-band-filter.json").get(), Map.class);
+        Object execute = handler.execute(alarmBandFilterEvent);
+        assertNotNull(execute);
     }
 
     Stream<Arguments> argumentsForValidRequest() throws IOException {

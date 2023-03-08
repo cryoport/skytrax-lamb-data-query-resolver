@@ -11,7 +11,7 @@ import java.util.Map;
 import java.util.Optional;
 
 @Singleton
-public class AlarmBandFilterResolver implements Resolver<AlarmBandFiltersEntity> {
+public class AlarmBandFilterResolver implements Resolver<Optional<AlarmBandFiltersEntity>> {
 
     private static final Logger LOG = LoggerFactory.getLogger(AlarmBandFilterResolver.class);
 
@@ -19,14 +19,10 @@ public class AlarmBandFilterResolver implements Resolver<AlarmBandFiltersEntity>
     private AlarmBandFiltersRepository alarmBandFiltersRepository;
 
     @Override
-    public AlarmBandFiltersEntity resolve(Map<String, Object> event) {
+    public Optional<AlarmBandFiltersEntity> resolve(Map<String, Object> event) {
         LOG.info("Starting AlarmBandFilter resolver");
         Map<String, Object> arguments = (Map<String, Object>) event.get("arguments");
         String name = arguments.get("name").toString();
-        Optional<AlarmBandFiltersEntity> alarmBandFilter = alarmBandFiltersRepository.findByName(name);
-        if (alarmBandFilter.isPresent()) {
-            return alarmBandFilter.get();
-        }
-        return new AlarmBandFiltersEntity();
+        return alarmBandFiltersRepository.findByName(name);
     }
 }
