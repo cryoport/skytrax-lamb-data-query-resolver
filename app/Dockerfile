@@ -10,7 +10,7 @@ COPY build/docker/native-main/layers/resources /home/app/resources
 COPY build/docker/native-main/layers/application.jar /home/app/application.jar
 RUN mkdir /home/app/config-dirs
 COPY build/docker/native-main/config-dirs/generateResourcesConfigFile /home/app/config-dirs/generateResourcesConfigFile
-RUN native-image -cp /home/app/libs/*.jar:/home/app/resources:/home/app/application.jar --no-fallback -H:Name=application -J--add-exports=org.graalvm.nativeimage.builder/com.oracle.svm.core.jdk=ALL-UNNAMED -J--add-exports=org.graalvm.nativeimage.builder/com.oracle.svm.core.configure=ALL-UNNAMED -J--add-exports=org.graalvm.sdk/org.graalvm.nativeimage.impl=ALL-UNNAMED -H:ConfigurationFileDirectories=/home/app/config-dirs/generateResourcesConfigFile -H:Class=io.micronaut.function.aws.runtime.MicronautLambdaRuntime
+RUN native-image -cp /home/app/libs/*.jar:/home/app/resources:/home/app/application.jar --no-fallback -H:Name=application -J--add-exports=org.graalvm.nativeimage.builder/com.oracle.svm.core.jdk=ALL-UNNAMED -J--add-exports=org.graalvm.nativeimage.builder/com.oracle.svm.core.configure=ALL-UNNAMED -J--add-exports=org.graalvm.sdk/org.graalvm.nativeimage.impl=ALL-UNNAMED -H:ConfigurationFileDirectories=/home/app/config-dirs/generateResourcesConfigFile -H:Class=com.cryoport.skytrax.FunctionLambdaRuntime
 FROM frolvlad/alpine-glibc:alpine-3.12
 RUN apk --no-cache update && apk add libstdc++
 EXPOSE 8080
