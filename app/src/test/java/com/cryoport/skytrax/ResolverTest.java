@@ -37,7 +37,7 @@ class ResolverTest extends BaseMongoDataTest {
     }
 
     @Test
-    void test_condition_moniitor_data_resolver_factory() {
+    void test_condition_monitor_data_resolver_factory() {
         Resolver<?> resolver = resolverFactory.provideResolver("conditionMonitorData");
         assertNotNull(resolver);
         assertInstanceOf(ConditionMonitorDataResolver.class, resolver);
